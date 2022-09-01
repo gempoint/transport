@@ -7,7 +7,7 @@ export default async function (app: FastifyInstance) {
   // random startup code bc its async here
   let storage = app.mega;
   await storage.ready;
-  let folder = storage.root.children.find((file) => file.name === "cloud");
+  let folder = storage.root.children?.find((file) => file.name === "cloud");
   // console.log(folder)
   if (!folder) {
     folder = await storage.mkdir("cloud");
@@ -19,6 +19,7 @@ export default async function (app: FastifyInstance) {
   app.decorate("size", await recalculate());
   const actions = ["add", "delete", "update", "move"] as const;
   actions.forEach((x) => {
+    // @ts-ignore
     storage.on(x, async () => {
       await recalculate();
     });
