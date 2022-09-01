@@ -12,4 +12,4 @@ RUN yarn build
 
 EXPOSE ${PORT}
 
-ENTRYPOINT ["node", "dist/server.js"]
+ENTRYPOINT ["yarn", "prod"]
