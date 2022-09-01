@@ -404,10 +404,9 @@ lru-cache@^6.0.0:
   dependencies:
     yallist "^4.0.0"
 
-megajs@^1.0.6:
+"megajs@https://github.com/gempoint/mega":
   version "1.0.6"
-  resolved "https://registry.yarnpkg.com/megajs/-/megajs-1.0.6.tgz#70c8087d8c41cee78953d583807ad946dc73c8d8"
-  integrity sha512-FWPPxD0a+aL9P2OgakHuj5pqBuPD80EV24ltcJ0i2pYzRmUuC9hgGmBML17LUHgBLAgQjWkAaAGwVtlatd7UbA==
+  resolved "https://github.com/gempoint/mega#330cd35270be6aadd59c07d2a3944f65c5d4092d"
   dependencies:
     abort-controller "^3.0.0"
     node-fetch "^2.6.7"
