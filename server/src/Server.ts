@@ -4,7 +4,7 @@ import helmet from "@fastify/helmet";
 import { CleanedEnvAccessors } from "envalid";
 import { MutableFile, Storage } from "megajs";
 import routes from "./routes";
-import {error as err} from "./utils"
+import { error as err } from "./utils"
 
 const log = console.log;
 const error = console.error;
@@ -18,13 +18,13 @@ class Server {
     });
     //this.api.setValidatorCompiler(TypeBoxValidatorCompiler).withTypeProvider<TypeBoxTypeProvider>()
     this.addStuff(x)
-      .then(() => {})
+      .then(() => { })
       .catch((e) => {
         log(`something went wrong adding stuff: ${e}`);
       });
     this.addRoutes();
     this.api
-      .listen(3000)
+      .listen(process.env.PORT || 3000)
       .then(() => {
         log("server started successfully");
       })
