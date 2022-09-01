@@ -406,7 +406,7 @@ lru-cache@^6.0.0:
 
 "megajs@https://github.com/gempoint/mega":
   version "1.0.6"
-  resolved "https://github.com/gempoint/mega#330cd35270be6aadd59c07d2a3944f65c5d4092d"
+  resolved "https://github.com/gempoint/mega#9bb03ed81a4e3a250f7913a86437f343274dd716"
   dependencies:
     abort-controller "^3.0.0"
     node-fetch "^2.6.7"
