@@ -18,6 +18,7 @@
     "@fastify/helmet": "^9.1.0",
     "@fastify/type-provider-typebox": "^2.1.0",
     "@sinclair/typebox": "^0.24.22",
+    "chalk": "4",
     "dotenv": "^16.0.1",
     "envalid": "^7.3.1",
     "fastify": "^4.3.0",

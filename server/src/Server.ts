@@ -4,7 +4,8 @@ import helmet from "@fastify/helmet";
 import { CleanedEnvAccessors } from "envalid";
 import { MutableFile, Storage } from "megajs";
 import routes from "./routes";
-import { error as err } from "./utils"
+import { error as err, red } from "./utils"
+import { DEFAULTCODE } from "./constants";
 
 const log = console.log;
 const error = console.error;
@@ -35,6 +36,9 @@ class Server {
 
   async addStuff(x: huh) {
     let api = this.api;
+    if (x.CODE === DEFAULTCODE) {
+      red("USING DEFAULT CODE! PLEASE CHANGE FOR SECURITY!")
+    }
     api.register(helmet, { contentSecurityPolicy: false });
     api.setErrorHandler((error, _req, rep) => {
       //console.log(err.)
@@ -47,7 +51,11 @@ class Server {
         keepalive: true,
       },
       (err) => {
-        error(`something went wrong with logging into mega: ${err}`);
+        if (!err) {
+          log('no err logging into mega')
+        } else {
+          error(`something went wrong with logging into mega: ${err}`)
+        }
       }
     );
     // let storage = await _storage.ready

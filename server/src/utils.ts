@@ -1,6 +1,7 @@
+import chalk from "chalk";
 import { execSync } from "child_process";
 
-const commitId = () => {
+export const commitId = () => {
   if (process.env.RAILWAY_GIT_COMMIT_SHA) {
     return process.env.RAILWAY_GIT_COMMIT_SHA.substring(0, 7)
   } else {
@@ -14,7 +15,7 @@ const commitId = () => {
  * @param  {number} seconds The number of seconds to be processed
  * @return {string}         The phrase describing the amount of time
  */
-function forHumans(seconds: number) {
+export function forHumans(seconds: number) {
   var levels = [
     [Math.floor(seconds / 31536000), 'years'],
     [Math.floor((seconds % 31536000) / 86400), 'days'],
@@ -38,7 +39,7 @@ export interface Response<T> {
   data: T
 }
 
-const ok = <T>(x: T, msg: string | null = null): Response<T> => {
+export const ok = <T>(x: T, msg: string | null = null): Response<T> => {
   return {
     ok: true,
     msg,
@@ -46,7 +47,7 @@ const ok = <T>(x: T, msg: string | null = null): Response<T> => {
   }
 }
 
-const error = <T>(msg: string, data: T): Response<T> => {
+export const error = <T>(msg: string, data: T): Response<T> => {
   return {
     ok: false,
     msg,
@@ -54,4 +55,4 @@ const error = <T>(msg: string, data: T): Response<T> => {
   }
 }
 
-export { commitId, forHumans, ok, error }
+export const red = (x: string) => console.log(chalk.red(x))
