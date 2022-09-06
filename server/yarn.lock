@@ -11,6 +11,14 @@
     ajv-formats "^2.1.1"
     fast-uri "^2.0.0"
 
+"@fastify/auth@^4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@fastify/auth/-/auth-4.0.0.tgz#d1ecca5e859e0b19fc1e6d9d17a3533f7ddf2dfb"
+  integrity sha512-LQJbzv+/hiyT7kU9FQBoUkmckUbdLHp8ImKqFzVM9khB7ZDwZIPo7FgrQR9JKescU5CtIWuZYsPo829ae559fQ==
+  dependencies:
+    fastify-plugin "^4.0.0"
+    reusify "^1.0.4"
+
 "@fastify/deepmerge@^1.0.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@fastify/deepmerge/-/deepmerge-1.1.0.tgz#91f0a5a27034ff76b7bece63a5906894940ace82"

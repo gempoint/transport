@@ -15,6 +15,7 @@
     "prod": "NODE_ENV=production node dist/main.js"
   },
   "dependencies": {
+    "@fastify/auth": "^4.0.0",
     "@fastify/helmet": "^9.1.0",
     "@fastify/jwt": "^6.3.2",
     "@fastify/type-provider-typebox": "^2.1.0",
