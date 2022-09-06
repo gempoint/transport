@@ -2,11 +2,7 @@ import chalk from "chalk";
 import { execSync } from "child_process";
 
 export const commitId = () => {
-  if (process.env.RAILWAY_GIT_COMMIT_SHA) {
-    return process.env.RAILWAY_GIT_COMMIT_SHA.substring(0, 7)
-  } else {
-    return execSync("git rev-parse --short HEAD").toString().trim()
-  }
+  return "gh"
 }
 
 /**
