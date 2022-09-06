@@ -1,12 +1,13 @@
 require("dotenv").config();
 import { cleanEnv, str } from "envalid";
 import Server from "./Server";
-import { DEFAULTCODE } from "./constants"
+import { DEFAULTCODE, DEFAULTSECRET } from "./constants"
 
 const env = cleanEnv(process.env, {
   EMAIL: str(),
   PASSWORD: str(),
-  CODE: str({default: DEFAULTCODE}),
+  CODE: str({ default: DEFAULTCODE }),
+  SECRET: str({ default: DEFAULTSECRET }),
 });
 
 try {

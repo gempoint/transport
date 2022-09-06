@@ -16,13 +16,15 @@
   },
   "dependencies": {
     "@fastify/helmet": "^9.1.0",
+    "@fastify/jwt": "^6.3.2",
     "@fastify/type-provider-typebox": "^2.1.0",
+    "@prisma/client": "4.3.1",
     "@sinclair/typebox": "^0.24.22",
-    "chalk": "4",
+    "chalk": "^4.0.1",
     "dotenv": "^16.0.1",
     "envalid": "^7.3.1",
     "fastify": "^4.3.0",
-    "megajs": "https://github.com/gempoint/mega.git#9bb03ed81a",
+    "megajs": "https://github.com/gempoint/mega/",
     "pretty-bytes": "5.6.0",
     "prisma": "^4.3.1"
   }

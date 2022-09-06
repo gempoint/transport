@@ -1,11 +1,15 @@
 import { fastify, FastifyInstance } from "fastify";
 //import { TypeBoxTypeProvider, TypeBoxValidatorCompiler } from '@fastify/type-provider-typebox'
 import helmet from "@fastify/helmet";
+import fastifyJWT from "@fastify/jwt"
 import { CleanedEnvAccessors } from "envalid";
 import { MutableFile, Storage } from "megajs";
 import routes from "./routes";
 import { error as err, red } from "./utils"
-import { DEFAULTCODE } from "./constants";
+import { DEFAULTCODE, DEFAULTSECRET } from "./constants";
+import { PrismaClient } from "@prisma/client";
+import fastifyAuth from "@fastify/auth"
+import auth from "./auth";
 
 const log = console.log;
 const error = console.error;
@@ -37,9 +41,16 @@ class Server {
   async addStuff(x: huh) {
     let api = this.api;
     if (x.CODE === DEFAULTCODE) {
-      red("USING DEFAULT CODE! PLEASE CHANGE FOR SECURITY!")
+      red("USING DEFAULT CODE! PLEASE CHANGE!")
+    }
+    if (x.SECRET === DEFAULTSECRET) {
+      red("USING DEFAULT SECRET! PLEASE CHANGE!")
     }
     api.register(helmet, { contentSecurityPolicy: false });
+    api.register(fastifyJWT, {
+      secret: x.SECRET
+    })
+    api.register(fastifyAuth)
     api.setErrorHandler((error, _req, rep) => {
       //console.log(err.)
       rep.status(400).send(err(error.message, error.stack));
@@ -61,6 +72,9 @@ class Server {
     // let storage = await _storage.ready
     api.decorate("mega", storage);
     api.decorate("code", x.CODE)
+    let prisma = new PrismaClient()
+    api.decorate('prisma', prisma);
+    api.register(auth)
   }
 
   addRoutes() {
@@ -75,6 +89,7 @@ type huh = Readonly<
     EMAIL: string;
     PASSWORD: string;
     CODE: string;
+    SECRET: string;
   } & CleanedEnvAccessors
 >;
 
@@ -84,5 +99,6 @@ declare module "fastify" {
     folder: MutableFile;
     size: number;
     code: string
+    prisma: PrismaClient;
   }
 }
